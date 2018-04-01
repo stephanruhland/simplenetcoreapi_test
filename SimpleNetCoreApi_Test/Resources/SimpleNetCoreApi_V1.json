@@ -1,0 +1,279 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "SimpleNetCoreApi"
+  },
+  "paths": {
+    "/api/Echo/{id}": {
+      "get": {
+        "tags": [ "Echo" ],
+        "operationId": "ApiEchoByIdGet",
+        "consumes": [],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/api/Echo": {
+      "post": {
+        "tags": [ "Echo" ],
+        "operationId": "ApiEchoPost",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "o",
+            "in": "body",
+            "required": false,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "type": "object" }
+          }
+        }
+      }
+    },
+    "/api/Logging/Information": {
+      "post": {
+        "tags": [ "Logging" ],
+        "operationId": "ApiLoggingInformationPost",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "type": "string" }
+          }
+        }
+      }
+    },
+    "/api/Logging/Warning": {
+      "post": {
+        "tags": [ "Logging" ],
+        "operationId": "ApiLoggingWarningPost",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "type": "string" }
+          }
+        }
+      }
+    },
+    "/api/Logging/Error": {
+      "post": {
+        "tags": [ "Logging" ],
+        "operationId": "ApiLoggingErrorPost",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "type": "string" }
+          }
+        }
+      }
+    },
+    "/api/Models": {
+      "get": {
+        "tags": [ "Models" ],
+        "operationId": "ApiModelsGet",
+        "consumes": [],
+        "produces": [ "application/json" ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ModelDto" }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Models" ],
+        "operationId": "ApiModelsPost",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "dto",
+            "in": "body",
+            "required": false,
+            "schema": { "$ref": "#/definitions/ModelDto" }
+          }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/api/Models/{id}": {
+      "get": {
+        "tags": [ "Models" ],
+        "operationId": "ApiModelsByIdGet",
+        "consumes": [],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/ModelDto" }
+          },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": [ "Models" ],
+        "operationId": "ApiModelsByIdPut",
+        "consumes": [ "application/json-patch+json", "application/json", "text/json", "application/*+json" ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "dto",
+            "in": "body",
+            "required": false,
+            "schema": { "$ref": "#/definitions/ModelDto" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Success" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": [ "Models" ],
+        "operationId": "ApiModelsByIdDelete",
+        "consumes": [],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/ModelDto" }
+          },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/api/Values": {
+      "get": {
+        "tags": [ "Values" ],
+        "operationId": "ApiValuesGet",
+        "consumes": [],
+        "produces": [ "text/plain", "application/json", "text/json" ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "/api/Values/{id}": {
+      "get": {
+        "tags": [ "Values" ],
+        "operationId": "ApiValuesByIdGet",
+        "consumes": [],
+        "produces": [ "text/plain", "application/json", "text/json" ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ModelDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

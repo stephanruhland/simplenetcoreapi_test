@@ -1,8 +1,9 @@
 FROM microsoft/dotnet:2-sdk-jessie AS build-env
 WORKDIR /app
 
-COPY *.sln ./
-COPY SimpleNetCoreApi_Test/SimpleNetCoreApi_Test.csproj SimpleNetCoreApi_Test/
+COPY . . 
 RUN dotnet restore
 
-ENTRYPOINT ["dotnet", "test", "SimpleNetCoreApi_Test.dll"]
+RUN dotnet test --list-tests
+
+ENTRYPOINT ["dotnet", "test"]
